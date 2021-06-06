@@ -2,15 +2,16 @@ package com.example.parcial2android;
 
 public class User {
 
-    public String id, name, city, email;
+    public String id, nombre, apellido, ciudad, correo;
 
     public User() {
     }
 
-    public User(String id, String nombre, String ciudad, String email) {
+    public User(String id, String name, String apellido, String city, String email) {
         this.id = id;
         this.nombre = name;
+        this.apellido = name;
         this.ciudad = city;
-        this.email = email;
+        this.correo = email;
     }
 }

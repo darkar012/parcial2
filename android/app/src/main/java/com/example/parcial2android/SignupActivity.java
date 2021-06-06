@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText nameET, cityET, emailET, passwordET, repasswordET;
+    private EditText nameET,apellidoET, cityET, emailET, passwordET, repasswordET;
     private Button signupBtn;
     private TextView loginLink;
     private FirebaseDatabase db;
@@ -31,6 +31,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         auth = FirebaseAuth.getInstance();
 
         nameET = findViewById(R.id.nameET);
+        apellidoET = findViewById(R.id.apellidoET);
         cityET = findViewById(R.id.cityET);
         emailET = findViewById(R.id.emailET);
         passwordET = findViewById(R.id.passwordET);
@@ -52,7 +53,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 auth.createUserWithEmailAndPassword(emailET.getText().toString(), passwordET.getText().toString()).addOnSuccessListener(
                         response -> {
                             String uid = auth.getCurrentUser().getUid();
-                            User user = new User(uid, nameET.getText().toString(), cityET.getText().toString(), emailET.getText().toString());
+                            User user = new User(uid, nameET.getText().toString(),apellidoET.getText().toString() , cityET.getText().toString(), emailET.getText().toString());
                             db.getReference().child("parcial2").child("users").child(user.id).setValue(user).addOnSuccessListener(
                                     dbresponse -> {
                                         Intent i = new Intent(this, ProfileActivity.class);
